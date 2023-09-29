@@ -8,15 +8,21 @@
  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int num = 0;
-	if (!b)
+	int n;
+	unsigned int valu = 0;
+
+	if (!p)
 		return (0);
-    	while (*b)
+
+	for (n = 0; p[n]; n++)
 	{
-		if ( *b !='0' && *b != '1')
-			return (0) ;
-        	num = num * 2 + (*b++ - '0');
-        
-    	}
-    	return (num) ;
+		if (p[n] < '0' || p[n] > '1')
+			return (0);
+		valu = 2 * valu + (p[n] - '0');
+	}
+
+	return (valu);
 }
+
+
+
