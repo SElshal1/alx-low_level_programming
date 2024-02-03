@@ -1,22 +1,37 @@
 #!/usr/bin/python3
-"""5-island_perimeter module"""
+"""
+Task 5 Return the perimeter of the island described in grid.
+"""
 
 
 def island_perimeter(grid):
-    """Returns the perimeter of the island described in grid"""
-    c = 0
-    length = len(grid) - 1
-    width = len(grid[0]) - 1
+    """Method tha returns the perimeter of the island described in grid."""
+    # p = perimeter, i = iteration 1, j = iteration2
+    p = 0
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if grid[i][j] == 1:
+                try:
+                    if grid[i - 1][j] == 0 or i == 0:
+                        p += 1
+                except IndexError:
+                    p += 1
 
-    for i, r in enumerate(grid):
-        for j, n in enumerate(r):
-            if n == 1:
-                if i == 0 or grid[i - 1][j] != 1:
-                    c += 1
-                if j == 0 or grid[i][j - 1] != 1:
-                    c += 1
-                if j == width or grid[i][j + 1] != 1:
-                    c += 1
-                if i == length or grid[i + 1][j] != 1:
-                    c += 1
-    return c
+                try:
+                    if grid[i + 1][j] == 0:
+                        p += 1
+                except IndexError:
+                    p += 1
+
+                try:
+                    if grid[i][j - 1] == 0 or j == 0:
+                        p += 1
+                except IndexError:
+                    p += 1
+
+                try:
+                    if grid[i][j + 1] == 0:
+                        p += 1
+                except IndexError:
+                    p += 1
+    return p
